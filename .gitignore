@@ -1,0 +1,21 @@
+/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.env
+
+# Database file
+backend/summarify.db
+
+# Uploads directory
+/uploads/*
+!/uploads/.gitkeep
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

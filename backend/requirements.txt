@@ -1,0 +1,23 @@
+# Summarify - Backend Dependencies
+
+# Web Framework
+flask==3.1.0
+flask-cors==5.0.1
+
+# AI/NLP - Transformers
+transformers==4.47.0
+torch==2.5.1
+
+# NLP Preprocessing
+nltk==3.9.1
+spacy==3.8.3
+
+# File Handling
+PyPDF2==3.0.1
+python-docx==1.1.2
+
+# Database
+# SQLite is built-in with Python
+
+# Utilities
+werkzeug==3.1.3
