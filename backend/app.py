@@ -17,7 +17,10 @@ from file_handler import extract_text_from_file, allowed_file
 
 # ─── App Configuration ───────────────────────────────────────────────
 
-app = Flask(__name__)
+# Serve the frontend static files from the ../frontend directory
+FRONTEND_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
+
+app = Flask(__name__, static_folder=FRONTEND_FOLDER, static_url_path="")
 CORS(app)  # Allow cross-origin requests from the frontend
 
 # Upload folder configuration
@@ -116,6 +119,12 @@ def clear_all_history() -> int:
 
 
 # ─── API Routes ──────────────────────────────────────────────────────
+
+@app.route("/")
+def serve_frontend():
+    """Serve the frontend index.html."""
+    return send_file(os.path.join(FRONTEND_FOLDER, "index.html"))
+
 
 @app.route("/api/health", methods=["GET"])
 def health_check():
@@ -274,8 +283,7 @@ def word_count():
 # ─── Run Server ──────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
     print("[*] Summarify backend starting...")
-    print(f"[*] API available at: http://localhost:{port}")
+    print("[*] API available at: http://localhost:5000")
     print("-" * 45)
-    app.run(debug=True, host="0.0.0.0", port=port)
+    app.run(debug=True, host="0.0.0.0", port=5000)
